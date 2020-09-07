@@ -46,6 +46,8 @@
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector group="gripper" name="arm" parent_group="arm" parent_link="wrist_roll_link"/>
 
+    <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="gripper_link"/>
+
     <end_effector group="gripper" name="arm_torso" parent_group="arm_torso" parent_link="wrist_roll_link"/>
 
     <end_effector group="head_full" name="head" parent_group="head" parent_link="head_tilt_link"/>

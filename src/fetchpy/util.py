@@ -13,8 +13,7 @@ from prpy.clone import Clone, Cloned
 logger = logging.getLogger('fetchpy')
 
 def or_traj_to_ros_vel(robot,traj):
-''' Creates a consecutive set of velocities and timestamps from an openrave affine trajectory '''
-	positions = []
+        positions = []
 	time = []
 	cspec = traj.GetConfigurationSpecification()
 	for iwaypoint in xrange(traj.GetNumWaypoints()):
@@ -38,7 +37,6 @@ def or_traj_to_ros_vel(robot,traj):
 	return positions, time
 
 def create_affine_trajectory(robot, poses):
-''' Creates an untimed openrave affine trajectory from a set of affine poses '''
     doft = openravepy.DOFAffine.X | openravepy.DOFAffine.Y | openravepy.DOFAffine.RotationAxis
     cspec = openravepy.RaveGetAffineConfigurationSpecification(doft, robot)
     traj = openravepy.RaveCreateTrajectory(robot.GetEnv(), 'GenericTrajectory')
@@ -49,7 +47,6 @@ def create_affine_trajectory(robot, poses):
     return traj
 
 def create_new_base_waypoints(base_joint_values, size):
-''' Creates new base waypoints from the center to given point for affine trajectories'''
 	first_point = np.array([0,0,0])
 	last_point = np.array([base_joint_values[0], 0, base_joint_values[1]])
 	diff = (first_point - last_point)/(size-1)
@@ -61,7 +58,6 @@ def create_new_base_waypoints(base_joint_values, size):
 	return new_wayspoints
 
 def create_new_timestamps(final_point, size):
-''' Creates new timestamps from the center to given point for affine trajectories '''
 	first_timestamp = 0.0
 	diff = (final_point - first_timestamp)/(size-1)
 	new_timestamps = []
